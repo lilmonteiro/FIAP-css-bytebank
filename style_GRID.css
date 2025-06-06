@@ -1,0 +1,202 @@
+@font-face {
+    font-family: DM Sans;
+    src: url("assets/DMSANS-VARIABLEFONT_OPSZ\,WGHT.TTF");
+}
+
+/* Reset de estilo padrão do navegador */
+* {
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+    padding: 0;
+    outline: none;
+    color: unset;
+    font-family: DM Sans;
+}
+
+/* Setando variáveis de estilo para otimização*/
+html {
+    --black: #232323;
+    --white: #ffffff;
+    --green: #47A138;
+    --green-light: #82E672;
+    --purple-dark: #513fef;
+    --purple: #6858F5;
+    --purple-light: #8E82FB;
+    --green-dark: #308E21;
+
+    --light-weight: 300;
+    --regular-weight: 500;
+    --bold-weight: 800;
+
+    --padding-default: 1em;
+    --radius-default: 10px;
+}
+
+/* Definindo as larguras e alturas do container principal para toda a tela*/
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    background-color: var(--green-light);
+    display: grid;
+    grid-template-rows: auto 4fr 1fr;
+    gap: calc(var(--padding-default) * 4);
+}
+
+h1 {
+    font-size: 3.5em;
+    line-height: 1em;
+}
+
+h2 {
+    font-size: 2.5em;
+    font-weight: var(--regular-weight);
+}
+
+nav {
+    background-color: var(--black);
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr auto;
+    padding: var(--padding-default) calc(var(--padding-default) * 2);
+}
+
+a {
+    color: var(--green);
+    font-weight: var(--regular-weight);
+}
+
+.container-home {
+    padding: var(--padding-default) calc(var(--padding-default) * 15);
+    display: grid;
+    grid-template-areas:
+        "text"
+        "cards";
+    grid-template-rows: 1fr 3fr;
+    gap: calc(var(--padding-default) * 4);
+}
+
+.container-titulo {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    grid-area: text;
+}
+
+.container-cards {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: repeat(auto-fit, minmax(auto, 1fr));
+    /* grid-template-areas: 
+     "card01 card02 card03"
+     "card04 card04 card04"; */
+    gap: calc(var(--padding-default) * 1.2);
+    height: 100%;
+    grid-area: cards;
+}
+
+.container-titulo button {
+    background-color: var(--purple-dark);
+    font-family: DM Sans;
+    padding: var(--padding-default) calc(var(--padding-default) * 1.5);
+    color: var(--white);
+    border-radius: var(--radius-default);
+}
+
+#card01 {
+    background-color: var(--purple-dark);
+    /* grid-column: span 50; */
+    /* grid-area: "card01"; */
+}
+
+#card02 {
+    background-color: var(--purple);
+    /* grid-area: "card02"; */
+}
+
+#card03 {
+    background-color: var(--purple-light);
+    /* grid-area: "card03"; */
+}
+
+#card04 {
+    background-color: var(--green-dark);
+    /* grid-area: "card04"; */
+}
+
+.card {
+    color: var(--white);
+    border-radius: var(--radius-default);
+    padding: var(--padding-default);
+    height: 100%;
+    transition: all 0.5s ease;
+    min-width: 150px;
+    cursor: pointer;
+    display: grid;
+    align-items: end;
+}
+
+.card:hover {
+    min-width: 20vw;
+    background-color: var(--black) !important;
+}
+
+footer {
+    background-color: var(--black);
+    padding: var(--padding-default) calc(var(--padding-default) * 10);
+    color: var(--green);
+    text-align: center;
+    font-weight: var(--bold-weight);
+}
+
+@media screen and (max-width: 1024px) {
+    html {
+        --padding-default: .45em;
+        --radius-default: 15px;
+    }
+
+    body {
+        height: 100vh;
+        grid-auto-flow: row;
+        gap: calc(var(--padding-default) * 3);
+        align-items: stretch;
+    }
+
+    .container-home {
+        grid-template-areas:
+            "cards"
+            "text";
+        padding: var(--padding-default) calc(var(--padding-default) * 1.5);
+        grid-template-rows: 2fr auto;
+        gap: calc(var(--padding-default) * 2);
+    }
+
+    .card {
+        min-width: unset;
+        min-height: 10vh;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+
+    .container-titulo {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(auto-fill, minmax(100px, 1fr));
+        height: fit-content;
+        gap: calc(var(--padding-default) * 2);
+    }
+
+    .container-cards {
+        grid-auto-flow: row;
+    }
+
+}
